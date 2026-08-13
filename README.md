@@ -1,35 +1,172 @@
-[README (1).md](https://github.com/user-attachments/files/31027185/README.1.md)
-# Goldo — Investor Matching (landing page)
+# Goldo
 
-A single-page site that embeds the Goldo Botpress chatbot. The public URL goes
-on page 1 of the assignment report and is what you screen-record for the demo.
+Investor matching for founders raising in Malaysia and Singapore.
 
-## Files
-- `index.html` — the whole site (styles and the Botpress embed are inline)
+Describe your startup in plain language; Goldo screens a knowledge base of 176
+real investors and returns a ranked shortlist with the reason for every match.
+The matching is done by production rules over structured data, not by asking a
+language model to pick — so every recommendation can be traced to a rule.
 
-## Deploy on GitHub Pages (free, ~5 minutes)
+This repo holds **the website** and **the bot logic behind it**.
 
-1. Create a GitHub account if you don't have one, at github.com.
-2. **New repository** → name it e.g. `goldo` → Public → Create.
-3. On the repo page: **Add file → Upload files** → drag in `index.html` →
-   **Commit changes**.
-4. **Settings → Pages** (left sidebar).
-5. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-6. Branch: **main**, folder: **/ (root)** → **Save**.
-7. Wait ~1 minute, then refresh. Pages shows your live URL, like:
-   `https://YOUR-USERNAME.github.io/goldo/`
+- The site is a static, multi-page site served by a zero-dependency Node server.
+- The assistant is a Botpress webchat embedded on every page. Its two Execute
+  Code cards live in [`bot/`](bot/), so the reasoning is version-controlled
+  alongside the pages that document it.
 
-Open it in a private window to confirm the chat button appears bottom-right and
-the "Open Goldo" button launches it.
+---
 
-## Updating the bot later
-The page loads the bot from Botpress's CDN, so any change you publish in
-Botpress appears on the site automatically — no need to re-upload `index.html`.
-Only re-upload if you change the page itself.
+## Structure
 
-## If the chat doesn't appear
-- Confirm the bot is **published** in Botpress (Publish button, top right).
-- Confirm Webchat is **enabled** and **shared/public** in Botpress → Channels.
-- Check the two `<script>` tags at the bottom of `index.html` still match the
-  embed snippet in Botpress → Webchat → Share (they can change if you recreate
-  the bot).
+```
+public/                 the website (static, no build step)
+  index.html            landing page
+  how-it-works.html     the six-stage pipeline
+  method.html           all seven rules, written out
+  coverage.html         what's in the knowledge base, and what's missing
+  faq.html              includes the questions where the answer is no
+  privacy.html          what the chat sends where
+  404.html
+  assets/               site.css, site.js, favicon.svg, og.svg
+  robots.txt, sitemap.xml
+bot/                    the Botpress side
+  01_extract_slots.js   Card 1 — free text -> startup frame (classifier)
+  02_match_investors.js Card 2 — the rule engine
+  data/                 the 176-investor knowledge base (CSV)
+  README.md             how to wire it up in Botpress Studio
+scripts/
+  check-site.js         static-site smoke test
+  stats.js              recompute the figures quoted on the site
+server.js               static file server (routing, headers, caching)
+railway.json            Railway build + healthcheck config
+```
+
+## Run it locally
+
+```bash
+npm start
+```
+
+Then open <http://localhost:3000>. There is nothing to install — `npm start` runs
+`node server.js`, and the site has no dependencies and no build step.
+
+Before pushing:
+
+```bash
+npm run check
+```
+
+That verifies every page has a title, description, canonical URL, the Botpress
+scripts, one `<h1>`, a skip link and working internal links, and that the sitemap
+agrees with the pages that actually exist. It exits non-zero on failure.
+
+## Deploy to Railway
+
+The repo is already Railway-shaped: Nixpacks detects Node, `npm start` boots the
+server on `$PORT`, and `/healthz` answers the healthcheck.
+
+1. Go to [railway.app](https://railway.app) → **New Project** →
+   **Deploy from GitHub repo** → pick `techkar1m/Goldo-ai`.
+2. Railway reads `railway.json`, builds with Nixpacks and starts `npm start`.
+   No environment variables are required.
+3. Open **Settings → Networking → Generate Domain** to get a public URL, e.g.
+   `goldo-ai.up.railway.app`.
+4. Put that hostname into the three places that hardcode it:
+   - the `<link rel="canonical">` and `og:url` / `og:image` tags in each page of
+     `public/`
+   - `public/sitemap.xml`
+   - the `Sitemap:` line in `public/robots.txt`
+
+   Then run `npm run check` and push. (The site works fine without step 4 — it
+   only affects what search engines and link previews report.)
+
+Every push to `main` redeploys.
+
+### Environment variables
+
+| Variable | Default | What it does |
+| --- | --- | --- |
+| `PORT` | `3000` | Set by Railway automatically. |
+| `HOST` | `0.0.0.0` | Bind address. |
+| `NODE_ENV` | — | Set to `production` to send HSTS. |
+| `DISABLE_CSP` | — | Set to `1` to drop the Content-Security-Policy header. Use only to diagnose a webchat that stopped rendering. |
+| `QUIET_LOGS` | — | Set to `1` to stop logging every request. |
+
+## How the chat is wired in
+
+Every "Start matching" control on the site — header, hero, footer, 404, the
+example prompt chips — is a `data-goldo-open` or `data-goldo-prompt` element.
+`public/assets/site.js` handles them all through one delegated listener:
+
+```html
+<button type="button" data-goldo-open>Start matching</button>
+<button type="button" data-goldo-prompt="Seed-stage fintech in Malaysia, raising US$500K.">…</button>
+```
+
+The Botpress bundle loads async from a CDN, so a click before the SDK is ready
+would otherwise be silently lost. `site.js` queues those clicks, watches for
+`webchat:ready` (and polls, because the bot config script initialises after
+`inject.js` defines `window.botpress`), then flushes the queue. If the SDK never
+arrives — usually a privacy extension blocking `botpress.cloud` — it tells the
+visitor instead of leaving a dead button.
+
+`data-goldo-prompt` opens the panel and sends that text as the first message
+after a short delay, so the bot's greeting lands first. Set `PREFILL_ENABLED` to
+`false` at the top of `site.js` to make those chips only open the panel.
+
+`window.openGoldo()` still exists as an alias, because the original single-page
+version called it from an inline `onclick`.
+
+### Updating the bot
+
+The site loads the bot from Botpress's CDN, so publishing in Botpress Studio
+updates the live site immediately — no redeploy. Only redeploy when the pages
+themselves change. Swapping in a different bot means replacing the second script
+tag in all seven pages of `public/`:
+
+```html
+<script src="https://files.bpcontent.cloud/2026/08/03/19/20260803193922-PNDMOM69.js" defer></script>
+```
+
+## Keeping the numbers honest
+
+The site quotes hard figures — 176 investors, 137 sector-agnostic, 34 with a
+published cheque range, 37 contacts needing verification, and the per-stage and
+per-sector counts on `/coverage`. They are all derived from
+`bot/data/investors_botpress.csv`:
+
+```bash
+npm run stats
+```
+
+Edit the CSV, re-run that, and reconcile `public/coverage.html` and the hero
+strip in `public/index.html` with the output. The rule weights on `/method` and
+the confidence floors on `/how-it-works` come from the constants in the two
+`bot/*.js` cards.
+
+## Troubleshooting
+
+**The chat button never appears.** Check the bot is *published* in Botpress, and
+that Webchat is enabled and shared. Then check the two script tags still match
+the snippet under Botpress → Webchat → Share — they change if the bot is
+recreated. Then rule out an ad blocker.
+
+**The chat appears but returns no matches.** Usually the `Investors` table is
+empty, or named differently from `InvestorsTable` in
+`bot/02_match_investors.js`.
+
+**Every conversation takes the guided path.** Card 1's classifier call is
+failing — most often a missing or under-scoped `HF_TOKEN`. It needs the
+*Inference Providers* permission. The bot is built to degrade to the guided
+questions rather than break, so this fails quietly by design.
+
+**Railway healthcheck fails.** Confirm the deploy log shows
+`Goldo site listening on http://0.0.0.0:<port>`. The server must bind `$PORT`,
+not a fixed one.
+
+## Limits worth stating plainly
+
+Goldo recommends only investors present in its knowledge base and does not
+guarantee investor interest, introductions or funding. Some cheque sizes are
+estimated from published fund size, and some contact details are unverified.
+It is a university project for module AAPP002-4-2, not financial advice.

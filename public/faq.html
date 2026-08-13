@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Goldo investor matching</title>
+<meta name="description" content="Whether a language model picks the investors, where the data comes from, what the score means, why five results, and what happens to what you type.">
+<link rel="canonical" href="https://goldo-ai.up.railway.app/faq">
+<meta name="theme-color" content="#f6f4ee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FAQ — Goldo investor matching">
+<meta property="og:description" content="What Goldo does, what it refuses to claim, and where its data comes from.">
+<meta property="og:url" content="https://goldo-ai.up.railway.app/faq">
+<meta property="og:image" content="https://goldo-ai.up.railway.app/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script>document.documentElement.className += " js";</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="mark" href="/"><span class="dot"></span>Goldo</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="nav" aria-label="Main">
+      <a href="/how-it-works">How it works</a>
+      <a href="/method">The method</a>
+      <a href="/coverage">Coverage</a>
+      <a href="/faq">FAQ</a>
+      <button class="btn btn-primary btn-sm" type="button" data-goldo-open>Start matching</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">FAQ</span>
+      <h1>Questions founders ask first.</h1>
+      <p class="lede">Including the ones where the answer is no.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap-narrow">
+      <div class="faq">
+
+        <details open>
+          <summary>Is it free?</summary>
+          <div class="answer">
+            <p>Yes. There's no sign-up, no account and nothing to pay. Open the chat, describe your round, get a shortlist.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Does a language model choose the investors?</summary>
+          <div class="answer">
+            <p>No. A zero-shot classifier reads your description and fills in three slots — sector, stage and geography. That's the only place a model is involved.</p>
+            <p>Choosing and ranking investors is done by seven production rules over structured data. That separation is deliberate: it means every result can be traced to a rule and reproduced, instead of depending on how a model felt about your wording.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Will Goldo introduce me to investors?</summary>
+          <div class="answer">
+            <p>No. Goldo doesn't contact anyone, doesn't broker introductions and has no relationship with the firms in its knowledge base. It hands you a shortlist and a contact route where one is on file; the outreach is yours to do.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Where does the investor data come from?</summary>
+          <div class="answer">
+            <p>It was compiled by hand from public sources — firm websites, published fund information and investor directories — into 176 structured frames covering Malaysia and Singapore.</p>
+            <p>It's a snapshot, not a live feed. Funds change thesis and raise new vehicles without updating anything public, so treat a match as a research starting point. The <a href="/coverage">coverage page</a> lists exactly what's in there and where it's thin.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Why only Malaysia and Singapore?</summary>
+          <div class="answer">
+            <p>Because the geography rules and the coverage map are built specifically for those two markets, and because the data was verified for them. A founder in Jakarta or Manila would get results computed from regional funds that happen to mention Southeast Asia — which would look plausible and be much less trustworthy. Goldo would rather cover two markets properly.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What does the score mean?</summary>
+          <div class="answer">
+            <p>It's the sum of the weighted rules that fired, out of a maximum of 100: stage fit up to 35, geography and sector 25 each, cheque size 10, focus tag 5.</p>
+            <p>It measures how well a firm fits the facts you gave. It is <strong>not</strong> a probability that they'll invest, and there's no model of investor appetite behind it. Two firms on 70 are equally consistent with your description, nothing more. The <a href="/method">method page</a> shows a full worked score.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Why do I only get five results?</summary>
+          <div class="answer">
+            <p>Because a shortlist you'll actually act on beats a ranking you'll scroll past. Goldo tells you how many investors it screened and how many the hard filters ruled out, so you can see the funnel behind the five.</p>
+            <p>If you want to widen it, change what you tell it — a broader geography or an unstated target raise will let more firms through the filters.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>It misread my startup. What now?</summary>
+          <div class="answer">
+            <p>Say it again more plainly. The classifier only accepts a slot when it clears a confidence floor, so vague descriptions tend to leave slots empty rather than fill them wrongly — and empty slots make Goldo ask you directly.</p>
+            <p>Naming things explicitly helps most: <em>“seed stage, healthtech, Singapore, raising US$2M”</em> will always beat a paragraph about your mission.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What if nothing matches?</summary>
+          <div class="answer">
+            <p>Goldo says so rather than padding the list. It happens when the hard filters eliminate almost everyone — usually a stage far from where this market's capital sits, or a market outside Malaysia and Singapore. The <a href="/coverage">stage breakdown</a> shows where the pools are thin.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I see the whole investor list?</summary>
+          <div class="answer">
+            <p>Not as a downloadable database — Goldo is built to answer a specific query, not to hand over a contact list for bulk outreach, which is how investor relationships get burned. The <a href="/coverage">coverage page</a> publishes the full aggregate shape of the data instead.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What happens to what I type?</summary>
+          <div class="answer">
+            <p>Your messages are processed by Botpress, which hosts the chat, and your description is sent to a hosted classifier to fill in the three slots. The site itself has no analytics, no ad tags and no tracking cookies.</p>
+            <p>Don't paste anything confidential — the sector, stage, market and raise size are all Goldo needs. See <a href="/privacy">privacy</a> for the detail.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>The chat button doesn't appear.</summary>
+          <div class="answer">
+            <p>Almost always a privacy extension or a network blocking <code>botpress.cloud</code>, which is where the chat loads from. Try a private window, or allow that domain. If the widget never loads, the site tells you rather than leaving the button dead.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Is this financial advice?</summary>
+          <div class="answer">
+            <p>No, and it can't be. Goldo is a matching tool built as a university project for module AAPP002-4-2. It doesn't know your cap table, your runway or your obligations, and nothing it outputs should be treated as investment, legal or financial advice.</p>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="cta-row" style="margin-top:44px">
+        <button class="btn btn-primary" type="button" data-goldo-open>Start matching</button>
+        <a href="/how-it-works" class="btn btn-ghost">How it works</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="mark" style="font-size:1.1rem"><span class="dot"></span>Goldo</span>
+        <p>An investor-matching assistant for founders raising in Malaysia and Singapore.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="/how-it-works">How it works</a>
+        <a href="/method">The method</a>
+        <a href="/coverage">Coverage</a>
+      </div>
+      <div class="foot-col">
+        <h5>About</h5>
+        <a href="/faq">FAQ</a>
+        <a href="/privacy">Privacy</a>
+        <a href="#main" data-goldo-open>Start matching</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span data-year>2026</span> Goldo · Investor-matching assistant · built for AAPP002-4-2</div>
+      <div>Malaysia &amp; Singapore</div>
+    </div>
+    <p class="disc">Goldo recommends only investors present in its knowledge base and does not guarantee investor interest, introductions or funding. Some cheque sizes are estimated from published fund size, and some contact details are unverified — confirm before outreach. Nothing here is financial advice.</p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. There's no sign-up, no account and nothing to pay. Open the chat, describe your round, get a shortlist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a language model choose the investors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A zero-shot classifier fills in three slots — sector, stage and geography — and that is the only place a model is involved. Choosing and ranking investors is done by seven production rules over structured data, so every result can be traced to a rule and reproduced."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will Goldo introduce me to investors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Goldo does not contact anyone or broker introductions. It hands you a shortlist and a contact route where one is on file; the outreach is yours to do."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does the investor data come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It was compiled by hand from public sources into 176 structured investor frames covering Malaysia and Singapore. It is a snapshot rather than a live feed, so a match is a research starting point."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the score mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the sum of the weighted rules that fired, out of 100: stage fit up to 35, geography and sector 25 each, cheque size 10, focus tag 5. It measures fit with the facts you gave, not the probability that an investor will invest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this financial advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Goldo is a matching tool built as a university project for module AAPP002-4-2 and nothing it outputs should be treated as investment, legal or financial advice."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2026/08/03/19/20260803193922-PNDMOM69.js" defer></script>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Goldo — investor matching for Southeast Asian founders">
+  <rect width="1200" height="630" fill="#f6f4ee"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#3a5a40"/>
+
+  <g transform="translate(84 92)">
+    <circle cx="19" cy="19" r="19" fill="#3a5a40"/>
+    <circle cx="19" cy="19" r="8" fill="#b98a3c"/>
+    <text x="56" y="28" font-family="Georgia, serif" font-size="34" font-weight="600" fill="#141b2e">Goldo</text>
+  </g>
+
+  <text x="84" y="220" font-family="'JetBrains Mono', monospace" font-size="19" letter-spacing="3.4" fill="#b98a3c">INVESTOR MATCHING · MALAYSIA &amp; SINGAPORE</text>
+
+  <text x="84" y="316" font-family="Georgia, serif" font-size="72" fill="#141b2e">Find the investors who</text>
+  <text x="84" y="396" font-family="Georgia, serif" font-size="72" fill="#141b2e">actually <tspan font-style="italic" fill="#3a5a40">fit</tspan> your round.</text>
+
+  <line x1="84" y1="466" x2="1116" y2="466" stroke="#d8d2c4" stroke-width="1"/>
+
+  <g font-family="Helvetica, Arial, sans-serif" fill="#454f68" font-size="20">
+    <text x="84" y="524" font-family="Georgia, serif" font-size="40" font-weight="600" fill="#3a5a40">176</text>
+    <text x="84" y="556" font-size="18">investors screened</text>
+
+    <text x="372" y="524" font-family="Georgia, serif" font-size="40" font-weight="600" fill="#3a5a40">7</text>
+    <text x="372" y="556" font-size="18">inspectable rules</text>
+
+    <text x="660" y="524" font-family="Georgia, serif" font-size="40" font-weight="600" fill="#3a5a40">Top 5</text>
+    <text x="660" y="556" font-size="18">with a reason for each</text>
+  </g>
+</svg>

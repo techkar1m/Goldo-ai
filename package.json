@@ -1,0 +1,24 @@
+{
+  "name": "goldo-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Goldo — investor matching for Southeast Asian founders. Static site + Botpress webchat, served by a zero-dependency Node server.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check": "node scripts/check-site.js",
+    "stats": "node scripts/stats.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "investor-matching",
+    "botpress",
+    "expert-system",
+    "malaysia",
+    "singapore"
+  ],
+  "license": "UNLICENSED"
+}

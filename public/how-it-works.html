@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Goldo works — from your sentence to a ranked shortlist</title>
+<meta name="description" content="The six stages Goldo runs on every query: capture, understand with a zero-shot classifier, fill missing slots, eliminate, score, explain.">
+<link rel="canonical" href="https://goldo-ai.up.railway.app/how-it-works">
+<meta name="theme-color" content="#f6f4ee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How Goldo works — from your sentence to a ranked shortlist">
+<meta property="og:description" content="Capture, understand, fill gaps, eliminate, score, explain — the full Goldo pipeline.">
+<meta property="og:url" content="https://goldo-ai.up.railway.app/how-it-works">
+<meta property="og:image" content="https://goldo-ai.up.railway.app/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script>document.documentElement.className += " js";</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="mark" href="/"><span class="dot"></span>Goldo</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="nav" aria-label="Main">
+      <a href="/how-it-works">How it works</a>
+      <a href="/method">The method</a>
+      <a href="/coverage">Coverage</a>
+      <a href="/faq">FAQ</a>
+      <button class="btn btn-primary btn-sm" type="button" data-goldo-open>Start matching</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h1>From one sentence to a ranked shortlist.</h1>
+      <p class="lede">Goldo runs the same six stages on every query. Only the second one involves a model reading your words — everything that decides which investors you see is ordinary, inspectable logic.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="pipeline">
+
+        <div class="pipe-row">
+          <div class="stage">Stage 01</div>
+          <div>
+            <h3>Capture what you tell it</h3>
+            <p>You type a description in your own words — no forms, no dropdowns. Something like <em>“we're building a fintech app for gig workers in Kuala Lumpur, pre-seed, raising about US$300K”</em> is plenty. Goldo stores that raw text and works from it.</p>
+          </div>
+        </div>
+
+        <div class="pipe-row">
+          <div class="stage">Stage 02</div>
+          <div>
+            <h3>Turn words into a startup frame</h3>
+            <p>A zero-shot classifier (<code>facebook/bart-large-mnli</code>) reads your description three separate times — once for sector, once for stage, once for geography. Each pass scores your text against a fixed vocabulary that matches the labels used in the investor knowledge base, because a slot that doesn't share vocabulary with the data can never match anything.</p>
+            <p>Each slot has a confidence floor: 0.55 for sector, 0.45 for stage, 0.50 for geography. Anything below its floor is left <strong>empty</strong> rather than guessed. This is the only stage where a model touches your query, and it is not allowed to choose investors.</p>
+          </div>
+        </div>
+
+        <div class="pipe-row">
+          <div class="stage">Stage 03</div>
+          <div>
+            <h3>Ask about anything it couldn't read</h3>
+            <p>Empty slots trigger a guided fallback: Goldo asks you directly for the stage, sector or market it couldn't infer, and for your target raise if you haven't mentioned one. If the classifier is cold-starting or rate-limited, the whole conversation falls back to this guided path instead of failing — so the matcher always gets a usable frame.</p>
+          </div>
+        </div>
+
+        <div class="pipe-row">
+          <div class="stage">Stage 04</div>
+          <div>
+            <h3>Eliminate the impossible</h3>
+            <p>Two hard filters run over all 176 investor frames. An investor is dropped if their stated stages sit more than one rung from yours on the ladder, or if none of their stated regions covers your market. Crucially, an investor is only ever dropped on <strong>positive evidence</strong> of a mismatch — blank data is not a reason to rule someone out.</p>
+          </div>
+        </div>
+
+        <div class="pipe-row">
+          <div class="stage">Stage 05</div>
+          <div>
+            <h3>Score the survivors</h3>
+            <p>Five weighted rules award points: stage fit is worth up to 35, geography and sector 25 each, cheque-size fit 10, and focus tags 5 as a tie-breaker. Exact hits score full marks and adjacent hits score partial — a seed fund still appears for a pre-seed founder, ranked below the funds that named your stage outright.</p>
+            <p><a href="/method">Every rule is written out in full on the method page.</a></p>
+          </div>
+        </div>
+
+        <div class="pipe-row">
+          <div class="stage">Stage 06</div>
+          <div>
+            <h3>Explain the shortlist</h3>
+            <p>You get the top five by score, each with the list of reasons that produced it, how many investors were screened, how many the hard filters ruled out, and a contact route where one is on file. If a contact is flagged as unverified, that flag comes through with it.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <span class="sec-label">Design decisions</span>
+      <h2>Three choices that shape every result</h2>
+      <div class="grid-3" style="margin-top:38px">
+        <div class="card">
+          <span class="tag">Silence ≠ mismatch</span>
+          <h4>Missing data never eliminates</h4>
+          <p>Most firms in this market publish no sector thesis and no cheque range. Treating silence as a mismatch would bury the majority of the market, so blanks are neutral throughout.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Tolerance = 1</span>
+          <h4>Adjacent stages still show</h4>
+          <p>Funds routinely stretch one rung either side of their stated stage. Goldo keeps neighbours in the running and ranks them below exact matches instead of hiding them.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Rules, not vibes</span>
+          <h4>The model never picks</h4>
+          <p>The classifier only fills in three slots. Choosing and ordering investors is done by rules, so the output can be audited line by line and reproduced.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid-2">
+        <div>
+          <span class="sec-label">What you get</span>
+          <ul class="prose" style="margin-left:20px">
+            <li>Up to five investors, ranked by score.</li>
+            <li>The rules that fired for each one, in plain English.</li>
+            <li>How many investors were screened and how many were ruled out.</li>
+            <li>A contact route where one exists, with a verification flag if it needs checking.</li>
+          </ul>
+        </div>
+        <div>
+          <span class="sec-label">What it won't do</span>
+          <ul class="prose" style="margin-left:20px">
+            <li>Introduce you to anyone, or contact investors on your behalf.</li>
+            <li>Predict whether an investor will be interested.</li>
+            <li>Recommend investors outside its knowledge base.</li>
+            <li>Give you financial or fundraising advice.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <h2>Try it on your own round</h2>
+      <p>Describe your startup in a sentence and see which of the 176 survive the filters.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary" type="button" data-goldo-open>Start matching</button>
+        <a href="/method" class="btn btn-ghost">Read the rules first</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="mark" style="font-size:1.1rem"><span class="dot"></span>Goldo</span>
+        <p>An investor-matching assistant for founders raising in Malaysia and Singapore.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="/how-it-works">How it works</a>
+        <a href="/method">The method</a>
+        <a href="/coverage">Coverage</a>
+      </div>
+      <div class="foot-col">
+        <h5>About</h5>
+        <a href="/faq">FAQ</a>
+        <a href="/privacy">Privacy</a>
+        <a href="#main" data-goldo-open>Start matching</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span data-year>2026</span> Goldo · Investor-matching assistant · built for AAPP002-4-2</div>
+      <div>Malaysia &amp; Singapore</div>
+    </div>
+    <p class="disc">Goldo recommends only investors present in its knowledge base and does not guarantee investor interest, introductions or funding. Some cheque sizes are estimated from published fund size, and some contact details are unverified — confirm before outreach. Nothing here is financial advice.</p>
+  </div>
+</footer>
+
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2026/08/03/19/20260803193922-PNDMOM69.js" defer></script>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

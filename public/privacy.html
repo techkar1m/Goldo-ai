@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy — what Goldo does with what you type</title>
+<meta name="description" content="Goldo sets no tracking cookies and runs no analytics. What the chat sends where, which third parties are involved, and what you should not paste into it.">
+<link rel="canonical" href="https://goldo-ai.up.railway.app/privacy">
+<meta name="theme-color" content="#f6f4ee">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Privacy — what Goldo does with what you type">
+<meta property="og:description" content="No analytics, no ad tags, no tracking cookies. Here is exactly what the chat sends where.">
+<meta property="og:url" content="https://goldo-ai.up.railway.app/privacy">
+<meta property="og:image" content="https://goldo-ai.up.railway.app/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script>document.documentElement.className += " js";</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="mark" href="/"><span class="dot"></span>Goldo</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="nav" aria-label="Main">
+      <a href="/how-it-works">How it works</a>
+      <a href="/method">The method</a>
+      <a href="/coverage">Coverage</a>
+      <a href="/faq">FAQ</a>
+      <button class="btn btn-primary btn-sm" type="button" data-goldo-open>Start matching</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Privacy</span>
+      <h1>What Goldo does with what you type.</h1>
+      <p class="lede">Short version: the site itself collects nothing, the chat is hosted by Botpress, and your description passes through a hosted classifier. Don't paste anything confidential.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap-narrow prose">
+
+      <h2>The site</h2>
+      <p>These pages are static files served from a Node process. There is no database, no user account, no login and no contact form. The site sets <strong>no cookies</strong>, runs <strong>no analytics</strong>, and carries <strong>no advertising or tracking tags</strong>. Standard web-server request logs (IP address, requested path, timestamp, user agent) exist for the lifetime of the running process and are not retained or analysed.</p>
+
+      <h2>The chat</h2>
+      <p>The assistant is a Botpress bot embedded from Botpress's CDN. When you open the chat, your browser connects to <code>botpress.cloud</code> and everything you type in the chat window is processed on Botpress's infrastructure under their terms and privacy policy. Botpress stores the conversation so the bot can hold context across messages, and sets its own storage in your browser to keep a conversation open across page loads.</p>
+      <p>Two things follow from that. First, the operators of this project can see conversations in the Botpress dashboard. Second, deleting the conversation on your side does not necessarily remove it from Botpress.</p>
+
+      <h2>The classifier</h2>
+      <p>To turn your description into a sector, stage and geography, the bot sends the text of that description to a hosted inference API running the open <code>facebook/bart-large-mnli</code> model. Only the description is sent — not your name, not your email, and nothing you type later in the conversation.</p>
+
+      <h2>Third parties involved in a normal visit</h2>
+      <div class="table-scroll" style="margin:22px 0 28px">
+        <table>
+          <caption class="sr-only">Third-party services</caption>
+          <thead>
+            <tr><th scope="col">Service</th><th scope="col">Why</th><th scope="col">What it receives</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Botpress</th><td>Hosts the chat assistant</td><td>Your chat messages, IP address, browser details</td></tr>
+            <tr><th scope="row">Hugging Face</th><td>Runs the zero-shot classifier</td><td>The text of your startup description</td></tr>
+            <tr><th scope="row">Google Fonts</th><td>Serves the three webfonts</td><td>IP address, browser details</td></tr>
+            <tr><th scope="row">Railway</th><td>Hosts this site</td><td>IP address, requested path (transient logs)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Each of these is a separate controller of the data it receives, governed by its own privacy policy. If you'd rather not involve any of them, don't open the chat — the rest of the site works without it, and the fonts are the only other outbound request.</p>
+
+      <h2>What not to send</h2>
+      <p>Goldo needs four facts: your sector, your stage, your market and roughly what you're raising. That's it. Please don't paste:</p>
+      <ul>
+        <li>Cap tables, term sheets or signed agreements.</li>
+        <li>Unpublished financials or revenue figures you'd not want repeated.</li>
+        <li>Personal data about co-founders, employees or customers.</li>
+        <li>Anything covered by an NDA.</li>
+      </ul>
+      <p>Treat the chat like a conversation at a networking event: enough to get a useful pointer, nothing you'd regret being on the record.</p>
+
+      <h2>Investor data on our side</h2>
+      <p>The knowledge base holds business contact information for investment firms, compiled from public sources — firm websites, published fund information and investor directories. It's business-to-business contact data, not personal profiles, and it isn't sold, licensed or handed out in bulk. If you represent a firm in it and want your entry corrected or removed, raise it through the <a href="https://github.com/techkar1m/Goldo-ai/issues">project repository</a>.</p>
+
+      <h2>Children</h2>
+      <p>This is a tool for people raising venture funding. It isn't directed at anyone under 18.</p>
+
+      <h2>Status of this project</h2>
+      <p>Goldo is a student project built for module AAPP002-4-2, not a company. There is no commercial entity behind it, no data-processing agreement on offer, and no guarantee of availability — it may be taken offline once the module ends.</p>
+
+      <h2>Changes</h2>
+      <p>If what the site does with data changes, this page changes with it. There's no mailing list to notify, so the page itself is the record.</p>
+
+      <p style="margin-top:34px;font-size:.86rem;color:var(--ink-faint)">Last updated 13 August 2026.</p>
+
+    </div>
+  </section>
+
+  <section class="band" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <h2>Ready when you are</h2>
+      <p>Four facts is all it takes: sector, stage, market, raise.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary" type="button" data-goldo-open>Start matching</button>
+        <a href="/faq" class="btn btn-ghost">Read the FAQ</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="mark" style="font-size:1.1rem"><span class="dot"></span>Goldo</span>
+        <p>An investor-matching assistant for founders raising in Malaysia and Singapore.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="/how-it-works">How it works</a>
+        <a href="/method">The method</a>
+        <a href="/coverage">Coverage</a>
+      </div>
+      <div class="foot-col">
+        <h5>About</h5>
+        <a href="/faq">FAQ</a>
+        <a href="/privacy">Privacy</a>
+        <a href="#main" data-goldo-open>Start matching</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span data-year>2026</span> Goldo · Investor-matching assistant · built for AAPP002-4-2</div>
+      <div>Malaysia &amp; Singapore</div>
+    </div>
+    <p class="disc">Goldo recommends only investors present in its knowledge base and does not guarantee investor interest, introductions or funding. Some cheque sizes are estimated from published fund size, and some contact details are unverified — confirm before outreach. Nothing here is financial advice.</p>
+  </div>
+</footer>
+
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2026/08/03/19/20260803193922-PNDMOM69.js" defer></script>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

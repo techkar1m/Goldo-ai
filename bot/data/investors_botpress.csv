@@ -1,0 +1,177 @@
+investor_id,name,firm,stage_focus,sector_focus,geography,ticket_size_min,ticket_size_max,focus_tags,portfolio,country,investor_type,contact,verify
+inv-1337-ventures,Bikesh Lakhmichand,1337 Ventures,pre-seed; seed,sector-agnostic,Malaysia; Southeast Asia,5000,50000,early-stage,,MY,Accelerator,info@1337.ventures,
+inv-5-pillars-ventures,5 Pillars Ventures,5 Pillars Ventures,growth,sector-agnostic,Malaysia,,,,,MY,Venture Capital,rahman@5pillarsventures.com,
+inv-500-startups-malaysia,500 Startups Malaysia,500 Startups Malaysia,seed; series-a; growth,sector-agnostic,Malaysia; Southeast Asia,250000,20000000,early-stage; tech-focused,,MY,Venture Capital,partnerships@500.co,
+inv-5x-capital,5X Capital,5X Capital,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,finance@5xcapital.my,
+inv-65-equity-partners,65 Equity Partners,65 Equity Partners,growth,sector-agnostic,Singapore; Southeast Asia; Europe; United States,,,,,SG,Government Fund,contact@65equitypartners.com,
+inv-8f-asset-management,8F Asset Management,8F Asset Management,seed; growth; buyout,agritech; climatetech; consumer,Singapore; Global,80000000,250000000,buyout; impact-driven,,SG,Venture Capital,contact@8f-am.com,
+inv-accelerating-asia-ventures,Accelerating Asia Ventures,Accelerating Asia Ventures,pre-seed; seed,tech,Singapore; Southeast Asia,100000,250000,,,SG,Venture Capital,team@acceleratingasia.com,
+inv-adams-street-partners-singapore,Adams Street Partners Singapore,Adams Street Partners Singapore,growth; buyout,healthtech; manufacturing,Singapore; Global,10000000,100000000,buyout; tech-focused,,SG,Private Equity,ichua@adamsstreetpartners.com,
+inv-adv-partners-management,ADV Partners Management,ADV Partners Management,growth,sector-agnostic,Singapore; China; India; Southeast Asia,50000000,50000000,,,SG,Private Equity,akumar@advpartners.com,
+inv-advantage-partners,Advantage Partners,Advantage Partners,buyout,sector-agnostic,Singapore; Japan; Southeast Asia; South Asia,50000000,75000000,buyout,,SG,Private Equity,ap-ir@advantagepartners.com,
+inv-aeon-co-bhd,AEON Co (M) Bhd,AEON Co (M) Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Corporate Venture Capital,byte@aeon.com.my,
+inv-affinity-equity-partners,Affinity Equity Partners (S),Affinity Equity Partners (S),growth; buyout,consumer; edtech; fintech; healthtech; logistics,Singapore; Australia; China; Japan; Korea; Southeast Asia,300000000,1000000000,buyout; tech-focused,,SG,Private Equity,bennylim@affinityequity.com,
+inv-affirma-capital-managers,Affirma Capital Managers (Singapore),Affirma Capital Managers (Singapore),growth; buyout,sector-agnostic,Singapore; Southeast Asia; India; Korea; China; Middle East; Africa,25000000,27000000,,,SG,Private Equity,enquiries@affirmacapital.com,
+inv-aipo-alliance-of-ip-owners,AIPO (Alliance Of IP Owners),AIPO (Alliance Of IP Owners),pre-seed,sector-agnostic,Malaysia,,,,,MY,Startup Program,+60162855770,
+inv-albourne-partners,Albourne Partners (Singapore),Albourne Partners (Singapore),growth; buyout,sector-agnostic,Singapore; Global,,,,,SG,Private Equity,d.low@albourne.com,
+inv-amprivate-equity,Amprivate Equity,Amprivate Equity,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320782392,yes
+inv-antares-ventures,Antares Ventures,Antares Ventures,seed; series-a,agritech; climatetech; consumer; deeptech; healthtech,Singapore; Southeast Asia; India; Europe,1000000,10000000,impact-driven,,SG,Venture Capital,louis.murayama@antares.ventures,
+inv-apex-fund-services,Apex Fund Services (Singapore),Apex Fund Services (Singapore),,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Service Provider,simon@apexservices.com,
+inv-archipelago-capital-partners,Archipelago Capital Partners,Archipelago Capital Partners,buyout,consumer; fintech; logistics,Singapore; Southeast Asia,15000000,50000000,buyout,,SG,Private Equity,info@arxpelago.com,
+inv-ardent-investment-partners,Ardent Investment Partners,Ardent Investment Partners,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,enquiry@ardent.com.sg,
+inv-ares-enterprise-a-star-research-entities,"Ares Enterprise, A*Star Research Entities","Ares Enterprise, A*Star Research Entities",growth; buyout,enterprise-saas,Singapore; Southeast Asia,,,,,SG,Private Equity,info@aresenterprise.com,
+inv-argor-capital-management,Argor Capital Management,Argor Capital Management,seed; series-a; growth,consumer,Singapore; Southeast Asia,,,tech-focused,,SG,Private Equity,ir@argor.vc,
+inv-arris-venture,Arris Venture,Arris Venture,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60380763063,yes
+inv-ascent-globalop,Ascent GlobalOp,Ascent GlobalOp,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+6569784780,
+inv-ascertis-capital,Ascertis Capital,Ascertis Capital,growth,sector-agnostic,India; Singapore; Southeast Asia,25000000,100000000,debt-financing,,SG,Private Equity,contact.us.sg@ascertiscredit.com,
+inv-asia-partners-fund-management,Asia Partners Fund Management,Asia Partners Fund Management,growth,sector-agnostic,Singapore; Southeast Asia,20000000,100000000,tech-focused,,SG,Private Equity,contact@asiapartners.com,
+inv-asian-development-bank,Asian Development Bank,Asian Development Bank,growth,agritech; edtech; fintech; healthtech; infrastructure,Singapore,5000000,75000000,,,SG,Bank / Financial Institution,ktorchiva@adb.org,
+inv-ata-plus,Ata Plus,Ata Plus,pre-seed; seed,sector-agnostic,Malaysia,12000,240000,,,MY,Angel Network,enquiry@ata-plus.com,
+inv-aura-group,Aura Group (Singapore),Aura Group (Singapore),growth; buyout,consumer; ecommerce; fintech; healthtech; infrastructure,Singapore; Australia; Southeast Asia,10000000,30000000,,Catapult; Foodbomb,SG,Private Equity,calvin.ng@aura.co,
+inv-axiom-asia-private-capital,Axiom Asia Private Capital,Axiom Asia Private Capital,seed; growth; buyout,consumer; healthtech,Singapore; Asia Pacific,,,buyout; tech-focused,,SG,Private Equity,debbi@axiomasia.com,
+inv-b-capital-group-singapore,B Capital Group Singapore,B Capital Group Singapore,seed; series-a; growth,edtech; enterprise-saas; fintech,Singapore; Southeast Asia; India,,,,,SG,Venture Capital,info@bcapgroup.com,
+inv-bain-company-s-e-asia,Bain & Company S.E. Asia,Bain & Company S.E. Asia,,sector-agnostic,Singapore; Global,,,,,SG,Service Provider,alumni.relations@bain.com,
+inv-banyan-ventures,Banyan Ventures,Banyan Ventures,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60379568108,yes
+inv-bee-alternatives-limited,Bee Alternatives Limited,Bee Alternatives Limited,seed; series-a; growth,sector-agnostic,Malaysia,,,,,MY,Venture Capital,info@bee-alt.com,
+inv-betatron-ventures,Betatron Ventures (SG),Betatron Ventures (SG),seed; series-a,climatetech; fintech; healthtech; logistics; manufacturing; proptech,Singapore,700000,3000000,,,SG,Venture Capital,info@betatron.co,
+inv-big-grain-capital,Big Grain Capital,Big Grain Capital,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,admin@biggraincapital.com,
+inv-bintang-capital-partners,Bintang Capital Partners,Bintang Capital Partners,growth,agritech; deeptech; edtech; fintech; infrastructure; logistics,Malaysia; Asia,,,early-stage,,MY,Private Equity,contact.us@bintangcapitalpartners.com,
+inv-bnp-paribas,BNP Paribas,BNP Paribas,,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Bank / Financial Institution,+6562101288,
+inv-braxton-capital-ventures,Braxton Capital Ventures,Braxton Capital Ventures,seed; growth,climatetech; fintech; healthtech,Singapore; Southeast Asia,500000,2000000,impact-driven,,SG,Venture Capital,angela@braxton.com.sg,
+inv-bumiputera-and-technology-venture-capital-sdn-bhd,Bumiputera And Technology Venture Capital Sdn Bhd,Bumiputera And Technology Venture Capital Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+6042274297,yes
+inv-burda-principal-investments,Burda Principal Investments,Burda Principal Investments,growth,climatetech; deeptech; ecommerce; fintech; infrastructure; media-gaming,Singapore; Europe; Southeast Asia; Australia,5000000,30000000,,,SG,Private Equity,neil.fong@burda.com,
+inv-cache-capital,Cache Capital,Cache Capital,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60377106218,yes
+inv-cambridge-associates-asia,Cambridge Associates Asia,Cambridge Associates Asia,growth; buyout,sector-agnostic,Singapore; Global,,,,,SG,Private Equity,asiacs@cambridgeassociates.com,
+inv-capital-square-partners-management,Capital Square Partners Management,Capital Square Partners Management,growth; buyout,sector-agnostic,Singapore; India; Southeast Asia,50000000,150000000,buyout; tech-focused,,SG,Private Equity,https://www.capitalsquarepartners.com,
+inv-capsquare-asia-partners,Capsquare Asia Partners,Capsquare Asia Partners,growth; buyout,consumer; edtech; healthtech; manufacturing,Singapore; Southeast Asia,15000000,40000000,buyout,,SG,Private Equity,info@capsquare-asia.com,
+inv-carlyle-singapore-investment-advisors,Carlyle Singapore Investment Advisors,Carlyle Singapore Investment Advisors,growth; buyout,consumer; fintech; healthtech; media-gaming,Singapore; Asia Pacific,,,buyout,,SG,Private Equity,vikram.lokur@carlyle.com,
+inv-castlelake,Castlelake,Castlelake,growth,sector-agnostic,Singapore; Europe; Asia,,,debt-financing,,SG,Private Equity,rick.morioka@castlelake.com,
+inv-cathay-capital,Cathay Capital,Cathay Capital,seed; growth; buyout,consumer; healthtech,Singapore; Europe; China; Southeast Asia; India,5000000,100000000,buyout; tech-focused,,SG,Private Equity,+6563378181,
+inv-cbc-group,CBC Group (Singapore),CBC Group (Singapore),seed; growth; buyout,healthtech,Singapore; Asia; China,,,buyout,,SG,Private Equity,ir@cbridgecap.com,
+inv-cdh-investment-advisory,CDH Investment Advisory,CDH Investment Advisory,seed; growth; buyout,consumer; healthtech; manufacturing,Singapore; China; Southeast Asia,10000000,30000000,buyout; tech-focused,,SG,Private Equity,cdhir@cdhfund.com,
+inv-cento-ventures,Cento Ventures,Cento Ventures,series-a; series-b,ecommerce; enterprise-saas; fintech,Singapore; Southeast Asia; Malaysia,1000000,2000000,,,SG,Venture Capital,ali@cento.vc,
+inv-cimb,Cimb,Cimb,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60327325577,yes
+inv-citrine-capital,Citrine Capital,Citrine Capital,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,hello@citrine.com.my,
+inv-clsa-capital-partners-singapore,CLSA Capital Partners (Singapore),CLSA Capital Partners (Singapore),growth; buyout,climatetech; consumer; healthtech; manufacturing; media-gaming,Singapore; Asia Pacific,,,buyout; debt-financing,,SG,Venture Capital,+6564167888,
+inv-cmia-capital-partners,CMIA Capital Partners,CMIA Capital Partners,growth,consumer,Singapore; China; Southeast Asia,5000000,50000000,early-stage,,SG,Private Equity,cmlee@cmia.com,
+inv-cms-opus,Cms Opus,Cms Opus,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320319008,yes
+inv-cmy-incubator,Cmy Incubator,Cmy Incubator,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60327171818,yes
+inv-collyer-capital,Collyer Capital,Collyer Capital,growth; buyout,sector-agnostic,Singapore; Southeast Asia,1000000,20000000,buyout,,SG,Private Equity,corporate-affairs@collyercapital.com,
+inv-continuum-capital,Continuum Capital,Continuum Capital,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320934044,yes
+inv-cope-private-equity,COPE Private Equity,COPE Private Equity,growth; buyout,sector-agnostic,Malaysia,,,,,MY,Private Equity,info@copepartners.com,
+inv-cowork-venture-sdn-bhd,Cowork Venture Sdn Bhd,Cowork Venture Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,hello@coworkventure.com,
+inv-cradle-fund,Cradle Fund,Cradle Fund,pre-seed; seed,sector-agnostic,Malaysia,,,early-stage,,MY,Government Fund,enquiries@cradle.com.my,
+inv-cradle-seed-ventures,Cradle Seed Ventures,Cradle Seed Ventures,seed,sector-agnostic,Malaysia,,,early-stage,,MY,Government Fund,invest@csv.com.my,
+inv-crewstone-international,Crewstone International,Crewstone International,growth; buyout,sector-agnostic,Malaysia,,,,,MY,Private Equity,jingjie@crewstoneinternational.com,
+inv-cvc-asia-pacific,CVC Asia Pacific (Singapore),CVC Asia Pacific (Singapore),growth; buyout,consumer; ecommerce; edtech; healthtech; infrastructure; media-gaming,Singapore; Asia Pacific,,,buyout; corporate-vc,,SG,Venture Capital,+6565007328,
+inv-cyberview,Cyberview,Cyberview,pre-seed; seed; series-a,sector-agnostic,Malaysia,,,,,MY,Government Fund,cisc@cyberview.com.my,
+inv-d-future-sdn-bhd,D Future Sdn Bhd,D Future Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60348121907,
+inv-daiwa-pi-partners-singapore,Daiwa PI Partners Singapore,Daiwa PI Partners Singapore,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,nbspsupport@daiwa.sg,
+inv-deg-representative-office-singapore,DEG Representative Office Singapore,DEG Representative Office Singapore,growth,sector-agnostic,Singapore,10000000,30000000,,,SG,Government Fund,linda.mok@deginvest.de,
+inv-digital-penang,Digital Penang,Digital Penang,pre-seed; seed; series-a,sector-agnostic,Malaysia,,,,,MY,Government Fund,contact@digitalpenang.my,
+inv-dta-growth-capital-sdn-bhd,DTA Growth Capital Sdn Bhd,DTA Growth Capital Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60377222560,yes
+inv-dta-ventures-management,Dta Ventures Management,Dta Ventures Management,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60377222560,yes
+inv-duane-morris-selvam,Duane Morris & Selvam,Duane Morris & Selvam,,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Service Provider,info@duanemorrisselvam.com,
+inv-durian-capital-berhad,Durian Capital Berhad,Durian Capital Berhad,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60192681221,
+inv-dymon-asia-private-equity,Dymon Asia Private Equity (Singapore),Dymon Asia Private Equity (Singapore),growth; buyout,sector-agnostic,Singapore; Southeast Asia,30000000,50000000,buyout,,SG,Private Equity,dape.enquiries@dymonasia.com,
+inv-east-west-bank-singapore,East West Bank Singapore,East West Bank Singapore,,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Bank / Financial Institution,talk2us@eastwestbank.com,
+inv-edbi,EDBI,EDBI,seed; series-a; growth,climatetech; deeptech; healthtech,Singapore; China; Europe; Asia,,,,,SG,Government Fund,infohq@edbi.com,
+inv-ee-capital,EE Capital,EE Capital,growth; buyout,sector-agnostic,Singapore,,,,,SG,Private Equity,support@capital.com,
+inv-ekuiti-nasional-berhad-ekuinas,Amirul Amri Alwi,Ekuiti Nasional Berhad (Ekuinas),growth; buyout,sector-agnostic,Malaysia,,,,,MY,Private Equity,https://ekuinas.com.my,
+inv-emerging-markets-investment-advisers,Emerging Markets Investment Advisers,Emerging Markets Investment Advisers,seed; growth,sector-agnostic,Singapore,2000000,10000000,,,SG,Private Equity,joshua.morris@emergingmarkets.asia,
+inv-enspire-capital,Enspire Capital,Enspire Capital,growth,sector-agnostic,Singapore; China; Southeast Asia,1000000,3000000,tech-focused,,SG,Private Equity,admin@enspire.vc,
+inv-enspire-ventures-sdn-bhd,Enspire Ventures Sdn Bhd,Enspire Ventures Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60361424877,
+inv-eqt-partners-asia,EQT Partners Asia,EQT Partners Asia,growth; buyout,enterprise-saas; healthtech; manufacturing,Singapore; Southeast Asia; India; Japan; China; Korea; Australia,50000000,250000000,buyout,,SG,Private Equity,+6562326300,
+inv-equitic-asset,Equitic Asset,Equitic Asset,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,general@equitic.vc,
+inv-ethos-capital,Ethos Capital,Ethos Capital,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320936111,yes
+inv-expedient-equity,Expedient Equity,Expedient Equity,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60377221368,yes
+inv-far-east-capital,Far East Capital,Far East Capital,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,australia-enquiries@fareast.com,
+inv-first-frontier-ventures-ffv,First Frontier Ventures (FFV),First Frontier Ventures (FFV),seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,connect@firstfrontierventures.com,
+inv-firstfloor-capital,FIRSTFLOOR CAPITAL,FIRSTFLOOR CAPITAL,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60377100092,
+inv-foodie-box-group,Foodie Box Group,Foodie Box Group,seed; series-a,consumer,Malaysia,,,,,MY,Corporate Venture Capital,+60377272100,
+inv-gaocheng-capital-management,Gaocheng Capital Management,Gaocheng Capital Management,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,+6569116888,
+inv-gecb-asia,GECB Asia,GECB Asia,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,info@geconsult.org,
+inv-general-atlantic-singapore-fund-management,General Atlantic Singapore Fund Management,General Atlantic Singapore Fund Management,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,+6566616700,
+inv-gibson-dunn-crutcher,Gibson Dunn & Crutcher,Gibson Dunn & Crutcher,,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Service Provider,inquiries@gibsondunn.com,
+inv-gobi-partners-malaysia,Gobi Partners Malaysia,Gobi Partners Malaysia,seed; series-a; series-b; growth,consumer; deeptech; enterprise-saas; web3,Malaysia; China; South Asia,,,,Animoca Brands,MY,Venture Capital,mail@gobi.vc,
+inv-golden-gate-ventures,Golden Gate Ventures,Golden Gate Ventures,pre-seed; seed; series-a,sector-agnostic,Singapore; Malaysia,,,early-stage; tech-focused,,SG,Venture Capital,hello@goldengate.vc,
+inv-golden-vision-capital,Golden Vision Capital (Singapore),Golden Vision Capital (Singapore),growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,info@goldenvision.com,
+inv-granite-asia-capital,Granite Asia Capital,Granite Asia Capital,series-a; series-b; growth,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Venture Capital,https://graniteasia.com,
+inv-gresham-house-asia,Gresham House Asia,Gresham House Asia,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,a.crosbiedawson@greshamhouse.com,
+inv-growth-charger-startup-accelerator-and-incubator,Growth Charger - Startup Accelerator and Incubator,Growth Charger - Startup Accelerator and Incubator,pre-seed; seed,sector-agnostic,Malaysia,5000,50000,,,MY,Accelerator,syazzana@growthcharger.com,
+inv-gulf-capital-asia,Gulf Capital Asia,Gulf Capital Asia,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,queennie@gulf.com.sg,
+inv-hamilton-lane,Hamilton Lane (HL Singapore),Hamilton Lane (HL Singapore),growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,gpaenquiries@hamiltonlane.com,
+inv-hdm,Hdm,Hdm,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,hdm@hdm.com.my,
+inv-indelible-ventures,Indelible Ventures,Indelible Ventures,seed,enterprise-saas,Malaysia,,,early-stage; tech-focused,,MY,Venture Capital,contact@indelible.vc,
+inv-inertia-aif,Inertia Aif,Inertia Aif,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320934044,yes
+inv-infinity-capital-management-sdn-bhd,Infinity Capital Management Sdn Bhd,Infinity Capital Management Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,info@infinity.com.my,
+inv-inflexion-pef,Inflexion Pef,Inflexion Pef,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320322188,yes
+inv-instrak-venture-capital-berhad,INSTRAK VENTURE CAPITAL BERHAD,INSTRAK VENTURE CAPITAL BERHAD,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,admin@instrakventurecapital.com,
+inv-intrinsic-sea,Intrinsic SEA,Intrinsic SEA,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,info@intrinsicsea.com,
+inv-ispring-capital-sdn-bhd,iSpring Capital Sdn Bhd,iSpring Capital Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60362033906,yes
+inv-japan-asia-investment-co-ltd,Japan Asia Investment Co. Ltd,Japan Asia Investment Co. Ltd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320709380,yes
+inv-jelawang-capital,Jelawang Capital,Jelawang Capital,growth,sector-agnostic,Malaysia,,,early-stage,,MY,Government Fund,+60321093000,
+inv-jungle-ventures,Jungle Ventures,Jungle Ventures,seed; series-a; series-b; series-c,consumer; enterprise-saas,Singapore; Southeast Asia,500000,20000000,,Kredivo; Livspace; Moglix; Turtlemint; Sociolla,SG,Venture Capital,contact@jungle.vc,
+inv-khazanah-nasional-berhad,Puteri Eleni Megat Osman,Khazanah Nasional Berhad,growth,sector-agnostic,Malaysia; Global,,,government-linked,,MY,Government Fund,info@khazanah.com.my,
+inv-lunix-group,Lunix Group,Lunix Group,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Corporate Venture Capital,+60189773226,
+inv-malaysia-venture-capital-management,Malaysia Venture Capital Management (MAVCAP),Malaysia Venture Capital Management (MAVCAP),seed; series-a; series-b,sector-agnostic,Malaysia,,,early-stage,"1,100+ startups since 2001",MY,Government Fund,+60320503000,yes
+inv-malaysian-business-angel-network,Malaysian Business Angel Network (MBAN),Malaysian Business Angel Network (MBAN),pre-seed; seed,sector-agnostic,Malaysia,12000,240000,,,MY,Angel Network,manager@mban.com.my,
+inv-malaysian-life-sciences,Malaysian Life Sciences,Malaysian Life Sciences,,healthtech,Malaysia,,,,,MY,Venture Capital,+60321814828,
+inv-malaysian-private-capital-association-mpca,Malaysian Private Capital Association (MPCA),Malaysian Private Capital Association (MPCA),pre-seed,sector-agnostic,Malaysia,,,,,MY,Startup Program,info@mvca.org.my,
+inv-malaysian-technology-development-corporation,Sukma Norsyidi,Malaysian Technology Development Corporation (MTDC),pre-seed; seed; series-a,sector-agnostic,Malaysia,,,,,MY,Government Fund,commsadmin@mtdc.com.my,
+inv-mavcap-biotech-sdn-bhd,Mavcap Biotech Sdn Bhd,Mavcap Biotech Sdn Bhd,seed; series-a,healthtech,Malaysia,,,,,MY,Venture Capital,+60320503000,yes
+inv-mavcap-ict-sdn-bhd,Mavcap ICT Sdn Bhd,Mavcap ICT Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60377222561,yes
+inv-maxis-broadband,Maxis Broadband,Maxis Broadband,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Corporate Venture Capital,sales@maxisbroadband.com.my,
+inv-mayban,Mayban,Mayban,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320322188,yes
+inv-mezzanine-capital,Mezzanine Capital,Mezzanine Capital,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60379662300,yes
+inv-millennial-holdings,Millennial Holdings,Millennial Holdings,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Corporate Venture Capital,contact@millennial.holdings,
+inv-momentum-sti,Momentum Sti,Momentum Sti,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320322188,yes
+inv-monk-s-hill-ventures,Monk's Hill Ventures,Monk's Hill Ventures,seed; series-a,sector-agnostic,Singapore; Southeast Asia,,,early-stage,,SG,Venture Capital,info@monkshill.com,
+inv-msc-venture-one-sdn-bhd,MSC Venture One Sdn Bhd,MSC Venture One Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60383153000,yes
+inv-muamalat-venture,Muamalat Venture,Muamalat Venture,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Corporate Venture Capital,feedback@muamalat.com.my,
+inv-musharaka,Musharaka,Musharaka,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60341427285,yes
+inv-mycreative-ventures,MyCreative Ventures,MyCreative Ventures,pre-seed; seed; series-a,sector-agnostic,Malaysia,,,,,MY,Government Fund,enquiry@mycreative.com.my,
+inv-mystartup,MYStartup (Cradle / MOSTI),MYStartup (Cradle / MOSTI),pre-seed,sector-agnostic,Malaysia,,,,,MY,Startup Program,+60340458600,
+inv-navis-capital-partners,Alisa Virojpokakul,Navis Capital Partners,growth; buyout,consumer; manufacturing,Malaysia; South Asia; Southeast Asia,,,buyout; early-stage,,MY,Private Equity,+60323023888,
+inv-netval,Netval,Netval,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60376652812,yes
+inv-north-east-private-equity-asia,North-East Private Equity Asia,North-East Private Equity Asia,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,sales@northeast.com.sg,
+inv-osk-ventures-international,OSK Ventures International,OSK Ventures International,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Corporate Venture Capital,+60321617233,yes
+inv-osk-sbi-venture-partners-ltd,OSK-SBI Venture Partners Ltd,OSK-SBI Venture Partners Ltd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,chingyee@osk-sbi.com,
+inv-oxfordtrax,Oxfordtrax,Oxfordtrax,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60377292080,yes
+inv-pantheon-ventures,Pantheon Ventures (Singapore),Pantheon Ventures (Singapore),growth,sector-agnostic,Singapore; Southeast Asia,,,co-investment; early-stage,,SG,Venture Capital,info@pantheon.com,
+inv-persatuan-harapan-mulia,PERSATUAN HARAPAN MULIA,PERSATUAN HARAPAN MULIA,pre-seed,sector-agnostic,Malaysia,,,,,MY,Startup Program,+60135058128,
+inv-photonics-venture-capital-sdn-bhd,Photonics Venture Capital Sdn Bhd,Photonics Venture Capital Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320503000,yes
+inv-proven-venture-capital,PROVEN VENTURE CAPITAL,PROVEN VENTURE CAPITAL,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,support@provenvcfund.com,
+inv-quadria-capital-investment-management,Quadria Capital Investment Management,Quadria Capital Investment Management,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,+6565926889,
+inv-rahu-ventures,Rahu Ventures,Rahu Ventures,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,apply@rahuventures.com,
+inv-ramalan,Ramalan,Ramalan,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,hello@ramalan.com,
+inv-resilient-one,Resilient One,Resilient One,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60378808092,yes
+inv-sbi-ventures,SBI Ventures,SBI Ventures,series-a; series-b,fintech; web3,Singapore; Southeast Asia,,,tech-focused,,SG,Venture Capital,+6565366123,
+inv-shook-lin-bok,Shook Lin & Bok,Shook Lin & Bok,,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Service Provider,slb@shooklin.com,
+inv-sidec,SIDEC,SIDEC,pre-seed; seed; series-a,sector-agnostic,Malaysia,,,,,MY,Government Fund,+60376275555,
+inv-singularity-ventures,Singularity Ventures,Singularity Ventures,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320934044,yes
+inv-soligress-portfolio-sdn-bhd,Soligress Portfolio Sdn Bhd,Soligress Portfolio Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60378804471,yes
+inv-spartan-ives-capital,Spartan Ives Capital,Spartan Ives Capital,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,inquiries@spartanivesvc.com,
+inv-spring-galaxy-advisory,Spring Galaxy Advisory,Spring Galaxy Advisory,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,sg.info@springgalaxy.com,
+inv-square-peg-singapore,Square Peg Singapore,Square Peg Singapore,seed; series-a,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Venture Capital,info@squarepeg.com,
+inv-stephenson-harwood-alliance,Stephenson Harwood (Singapore) Alliance,Stephenson Harwood (Singapore) Alliance,,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Service Provider,info@stephensonharwood.com,
+inv-swiss-asia-financial-services,Swiss-Asia Financial Services,Swiss-Asia Financial Services,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,+6565133250,
+inv-teak,Teak,Teak,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320312202,yes
+inv-technology-asia-ventures,Technology Asia Ventures,Technology Asia Ventures,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320923277,yes
+inv-th-capital,TH Capital,TH Capital,seed; series-a,deeptech; ecommerce; fintech; media-gaming,Malaysia; Southeast Asia,,,,StoreHub; EasyParcel,MY,Venture Capital,admin@th.capital,
+inv-the-hive-southeast-asia,The Hive Southeast Asia,The Hive Southeast Asia,seed,agritech; deeptech; edtech; fintech; infrastructure; logistics; web3,Malaysia; Asia,,,early-stage,,MY,Venture Capital,info@thehivesea.com,
+inv-thg-capital,Thg Capital,Thg Capital,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60320923277,yes
+inv-tnb-aura-evergreen,TNB Aura Evergreen,TNB Aura Evergreen,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,investment@tnbaura.com,
+inv-tr-capital-advisors,TR Capital Advisors (Singapore),TR Capital Advisors (Singapore),growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,info@capitaladvisors.com,
+inv-trans-econ,Trans Econ,Trans Econ,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+60362103773,yes
+inv-twin-towers-ventures,Twin Towers Ventures,Twin Towers Ventures,seed; series-a,climatetech; deeptech; manufacturing,Malaysia,,,,,MY,Venture Capital,compliance@ttv.vc,
+inv-two-bit-vc-sdn-bhd,Two Bit VC Sdn Bhd,Two Bit VC Sdn Bhd,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,c@twobit.co,
+inv-uvcc,UVCC,UVCC,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,enquiry@origgin.com,
+inv-vcorp-capital,VCorp Capital,VCorp Capital,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,admin@vcorpcapital.com,
+inv-vcorp-capital-management,VCorp Capital Management,VCorp Capital Management,seed; series-a,sector-agnostic,Malaysia,,,,,MY,Venture Capital,admin@vcorpcapital.com,
+inv-venturetech,VentureTECH,VentureTECH,pre-seed; seed; series-a,sector-agnostic,Malaysia,,,,,MY,Government Fund,+601263901177,
+inv-vertex-ventures,Vertex Ventures,Vertex Ventures,seed; series-a; series-b,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Venture Capital,+6568288088,
+inv-vf-capital,Vf Capital,Vf Capital,,sector-agnostic,Malaysia,,,,,MY,Venture Capital,+6085426000,yes
+inv-wah-hin-company,Wah Hin & Company,Wah Hin & Company,,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Service Provider,sales@wahhin.com,
+inv-warburg-pincus-singapore,Warburg Pincus Singapore,Warburg Pincus Singapore,growth; buyout,sector-agnostic,Singapore; Southeast Asia,,,,,SG,Private Equity,alice.gibb@warburgpincus.com,
+inv-xeraya-capital,Xeraya Capital,Xeraya Capital,seed; series-a; growth,healthtech,Malaysia,,,,,MY,Venture Capital,proposal@xeraya.com,

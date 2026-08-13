@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The method — every rule Goldo uses, written out</title>
+<meta name="description" content="Goldo's seven production rules in full: two eliminators for stage and geography, five weighted scorers, the stage ladder and a worked score.">
+<link rel="canonical" href="https://goldo-ai.up.railway.app/method">
+<meta name="theme-color" content="#f6f4ee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The method — every rule Goldo uses, written out">
+<meta property="og:description" content="Two eliminator rules, five weighted scorers, and the reasoning behind each weight.">
+<meta property="og:url" content="https://goldo-ai.up.railway.app/method">
+<meta property="og:image" content="https://goldo-ai.up.railway.app/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script>document.documentElement.className += " js";</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="mark" href="/"><span class="dot"></span>Goldo</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="nav" aria-label="Main">
+      <a href="/how-it-works">How it works</a>
+      <a href="/method">The method</a>
+      <a href="/coverage">Coverage</a>
+      <a href="/faq">FAQ</a>
+      <button class="btn btn-primary btn-sm" type="button" data-goldo-open>Start matching</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">The method</span>
+      <h1>Every rule, written out.</h1>
+      <p class="lede">Goldo is a frame-based expert system with two tiers of production rules. Nothing below is hidden behind a model — this page is the actual matching logic, in the order it runs.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <span class="sec-label">Knowledge representation</span>
+      <h2 style="margin-bottom:18px">Investors are frames, not prose</h2>
+      <p class="prose" style="max-width:68ch">Each of the 176 investors is stored as a frame with fixed slots. Storing them this way — rather than as free text — is what makes rule-based matching possible at all: every rule reads a named slot, and every slot uses the same controlled vocabulary the classifier labels your description with.</p>
+
+      <div class="table-scroll" style="margin-top:26px">
+        <table>
+          <caption class="sr-only">Slots in an investor frame</caption>
+          <thead>
+            <tr><th scope="col">Slot</th><th scope="col">Example value</th><th scope="col">Used by</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">firm</th><td>1337 Ventures</td><td>display</td></tr>
+            <tr><th scope="row">stage_focus</th><td>pre-seed; seed</td><td>E1, S1</td></tr>
+            <tr><th scope="row">geography</th><td>Malaysia; Southeast Asia</td><td>E2, S2</td></tr>
+            <tr><th scope="row">sector_focus</th><td>sector-agnostic</td><td>S3</td></tr>
+            <tr><th scope="row">ticket_size_min / max</th><td>5000 / 50000</td><td>S4</td></tr>
+            <tr><th scope="row">focus_tags</th><td>early-stage</td><td>S5</td></tr>
+            <tr><th scope="row">investor_type, country</th><td>Accelerator, MY</td><td>display</td></tr>
+            <tr><th scope="row">contact, verify</th><td>info@example.com, yes</td><td>display</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <p><strong>Multi-valued slots are semicolon-separated.</strong> A fund that does both pre-seed and seed stores <code>pre-seed; seed</code>, and the rules treat each entry independently — taking the <em>best</em> fit across them, never the average.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <span class="sec-label">Tier 1 · eliminator rules</span>
+      <h2>Hard filters: two ways to be ruled out</h2>
+      <p class="lede" style="margin-top:16px">Eliminators are absolute — a firm that fails one never reaches the scorer. Both rules require positive evidence of a mismatch, so an investor with a blank stage or blank geography always survives to be scored.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+
+      <div class="rule-box">
+        <header>
+          <span class="id">E1</span>
+          <span class="name">Stage mismatch</span>
+          <span class="weight">eliminate</span>
+        </header>
+        <div class="body">
+<pre class="logic"><span class="kw">IF</span>   startup.stage is known
+<span class="kw">AND</span>  investor.stage_focus is not empty
+<span class="kw">AND</span>  min( |ladder(startup.stage) − ladder(each investor stage)| ) <span class="op">&gt;</span> 1
+<span class="kw">THEN</span> drop the investor
+     reason: "stage mismatch (invests seed/series-a)"</pre>
+          <p>Stages sit on a seven-rung ladder. The rule measures the distance from your stage to the investor's <em>nearest</em> stated stage, and drops them only if even their closest stage is more than one rung away. A buyout fund is therefore ruled out for a pre-seed startup, while a seed fund is not.</p>
+          <div class="table-scroll" style="margin-top:16px">
+            <table>
+              <caption class="sr-only">The stage ladder</caption>
+              <thead>
+                <tr><th scope="col">Rung</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Stage</th><td>pre-seed</td><td>seed</td><td>series-a</td><td>series-b</td><td>series-c</td><td>growth</td><td>buyout</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <header>
+          <span class="id">E2</span>
+          <span class="name">Geography mismatch</span>
+          <span class="weight">eliminate</span>
+        </header>
+        <div class="body">
+<pre class="logic"><span class="kw">IF</span>   startup.geography is known
+<span class="kw">AND</span>  investor.geography is not empty
+<span class="kw">AND</span>  no investor region appears in covers(startup.geography)
+<span class="kw">THEN</span> drop the investor
+     reason: "geography mismatch (covers China/India)"</pre>
+          <p>A market is covered either by name or by a region that contains it. Both supported markets accept the same wider set, so a fund that only writes “Southeast Asia” still competes for a Malaysian founder.</p>
+          <div class="table-scroll" style="margin-top:16px">
+            <table>
+              <caption class="sr-only">Geography coverage map</caption>
+              <thead>
+                <tr><th scope="col">Your market</th><th scope="col">Counts as covered when the investor lists</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Malaysia</th><td>Malaysia · Southeast Asia · Asia · Asia Pacific · Global · No preference</td></tr>
+                <tr><th scope="row">Singapore</th><td>Singapore · Southeast Asia · Asia · Asia Pacific · Global · No preference</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <span class="sec-label">Tier 2 · scorer rules</span>
+      <h2>Weighted scoring: five ways to earn points</h2>
+      <p class="lede" style="margin-top:16px">Survivors start at zero and accumulate points. Stage and geography lead the weights because those slots are reliably populated across the knowledge base; sector is worth just as much when it's present, but most firms in this market never published a thesis.</p>
+
+      <div class="table-scroll" style="margin-top:34px">
+        <table>
+          <caption class="sr-only">Scorer weights</caption>
+          <thead>
+            <tr><th scope="col">Rule</th><th scope="col">Signal</th><th class="num" scope="col">Exact</th><th class="num" scope="col">Partial</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">S1</th><td>Stage fit</td><td class="num">35</td><td class="num">21</td></tr>
+            <tr><th scope="row">S2</th><td>Geography fit</td><td class="num">25</td><td class="num">18</td></tr>
+            <tr><th scope="row">S3</th><td>Sector fit</td><td class="num">25</td><td class="num">—</td></tr>
+            <tr><th scope="row">S4</th><td>Cheque-size fit</td><td class="num">10</td><td class="num">—</td></tr>
+            <tr><th scope="row">S5</th><td>Focus tag</td><td class="num">5</td><td class="num">—</td></tr>
+            <tr><th scope="row">Max</th><td>Perfect fit on every signal</td><td class="num">100</td><td class="num">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+
+      <div class="rule-box">
+        <header>
+          <span class="id">S1</span>
+          <span class="name">Stage fit</span>
+          <span class="weight">35 pts · 21 adjacent</span>
+        </header>
+        <div class="body">
+<pre class="logic"><span class="kw">LET</span>  d = min distance from startup.stage to investor's stages
+<span class="kw">IF</span>   d = 0 <span class="kw">THEN</span> +35  "invests at seed stage"
+<span class="kw">IF</span>   d = 1 <span class="kw">THEN</span> +21  "invests adjacent to seed"</pre>
+          <p>The heaviest signal, because stage is the thing investors are most consistent about publishing and the thing they least often bend on. Adjacent fits keep 60% of the weight — enough to stay visible, not enough to outrank a fund that named your stage.</p>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <header>
+          <span class="id">S2</span>
+          <span class="name">Geography fit</span>
+          <span class="weight">25 pts · 18 regional</span>
+        </header>
+        <div class="body">
+<pre class="logic"><span class="kw">IF</span>   investor names your market exactly
+<span class="kw">THEN</span> +25  "covers Malaysia"
+<span class="kw">ELSE IF</span> investor covers it via a wider region
+<span class="kw">THEN</span> +18  "covers Malaysia via Southeast Asia"</pre>
+          <p>Naming your country beats covering it regionally. A Kuala Lumpur fund that writes “Malaysia” is a materially better prospect for a Malaysian founder than a global fund that would technically consider you, and the 70% multiplier encodes that.</p>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <header>
+          <span class="id">S3</span>
+          <span class="name">Sector fit</span>
+          <span class="weight">25 pts · agnostic is neutral</span>
+        </header>
+        <div class="body">
+<pre class="logic"><span class="kw">IF</span>   startup sectors ∩ investor sectors is not empty
+<span class="kw">THEN</span> +25  "sector match: fintech"
+<span class="kw">ELSE IF</span> investor is sector-agnostic
+<span class="kw">THEN</span> +0   "sector-agnostic investor"   <span class="op">// noted, not scored</span></pre>
+          <p>This is the most consequential design decision in the system. 137 of 176 investors here are sector-agnostic. Penalising them for not declaring a thesis would bury three quarters of the market, so agnostic firms are neutral: they earn no bonus and take no penalty, and the reason line says so plainly.</p>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <header>
+          <span class="id">S4</span>
+          <span class="name">Cheque-size fit</span>
+          <span class="weight">10 pts</span>
+        </header>
+        <div class="body">
+<pre class="logic"><span class="kw">IF</span>   target raise given <span class="kw">AND</span> investor has a ticket range
+<span class="kw">AND</span>  min <span class="op">&lt;=</span> raise <span class="op">&lt;=</span> max
+<span class="kw">THEN</span> +10  "cheque range fits US$300K ask"
+<span class="kw">ELSE</span>      +0   "ask below their US$1M minimum"</pre>
+          <p>Deliberately light, and only applied when you actually state a raise. Only 34 of the 176 investors publish a usable cheque range, and several of those are estimated from fund size — too thin a signal to let it move rankings much. A miss is still reported so you know the gap before you write to them.</p>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <header>
+          <span class="id">S5</span>
+          <span class="name">Focus tag</span>
+          <span class="weight">5 pts · tie-breaker</span>
+        </header>
+        <div class="body">
+<pre class="logic"><span class="kw">IF</span>   startup is pre-seed or seed <span class="kw">AND</span> tag = "early-stage"
+<span class="kw">THEN</span> +5   "focuses on early-stage"
+<span class="kw">IF</span>   startup is later <span class="kw">AND</span> tag = "growth-capital"
+<span class="kw">THEN</span> +5   "focuses on growth capital"</pre>
+          <p>Exists purely to break ties between otherwise identical scores, nudging firms whose declared identity matches where you are in your life as a company.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <span class="sec-label">Worked score</span>
+      <h2 style="margin-bottom:18px">Adding it up for one investor</h2>
+      <p class="prose">A pre-seed Malaysian fintech founder raising US$300K, scored against an accelerator whose frame reads <code>stage_focus: pre-seed; seed</code>, <code>geography: Malaysia; Southeast Asia</code>, <code>sector_focus: sector-agnostic</code>, <code>ticket: 5,000–50,000</code>, <code>focus_tags: early-stage</code>:</p>
+
+      <div class="table-scroll" style="margin-top:24px">
+        <table>
+          <caption class="sr-only">Worked scoring example</caption>
+          <thead>
+            <tr><th scope="col">Rule</th><th scope="col">Outcome</th><th class="num" scope="col">Points</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">E1</th><td>pre-seed listed exactly — survives</td><td class="num">—</td></tr>
+            <tr><th scope="row">E2</th><td>Malaysia listed exactly — survives</td><td class="num">—</td></tr>
+            <tr><th scope="row">S1</th><td>invests at pre-seed stage</td><td class="num">+35</td></tr>
+            <tr><th scope="row">S2</th><td>covers Malaysia by name</td><td class="num">+25</td></tr>
+            <tr><th scope="row">S3</th><td>sector-agnostic investor — neutral</td><td class="num">+0</td></tr>
+            <tr><th scope="row">S4</th><td>US$300K sits above their US$50K maximum</td><td class="num">+0</td></tr>
+            <tr><th scope="row">S5</th><td>focuses on early-stage</td><td class="num">+5</td></tr>
+            <tr><th scope="row">Total</th><td>ranked on 65 of a possible 100</td><td class="num">65</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <p><strong>Note what the score does not claim.</strong> 65 means “this firm fits the facts you gave me on four of five signals”. It is not a probability that they will invest, and Goldo never presents it as one.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark tight">
+    <div class="wrap">
+      <span class="sec-label">Limits</span>
+      <h2 style="margin-bottom:16px">Where this method is weakest</h2>
+      <div class="grid-3" style="margin-top:32px">
+        <div class="card">
+          <h4>Vocabulary is fixed</h4>
+          <p>A sector outside the fifteen labels can't be matched. An unusual startup gets classified into the nearest label or into nothing at all.</p>
+        </div>
+        <div class="card">
+          <h4>Data is as good as its source</h4>
+          <p>Stage and sector come from what firms publish. A fund that quietly changed thesis last quarter still matches its old frame.</p>
+        </div>
+        <div class="card">
+          <h4>No relationship signal</h4>
+          <p>Fit on paper is not warmth. Goldo can't see who has already backed your competitor, or who is out of dry powder.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>See the rules run</h2>
+      <p>Describe your startup and Goldo will show you which rules fired for each match.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary" type="button" data-goldo-open>Start matching</button>
+        <a href="/coverage" class="btn btn-ghost">Inspect the data first</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="mark" style="font-size:1.1rem"><span class="dot"></span>Goldo</span>
+        <p>An investor-matching assistant for founders raising in Malaysia and Singapore.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="/how-it-works">How it works</a>
+        <a href="/method">The method</a>
+        <a href="/coverage">Coverage</a>
+      </div>
+      <div class="foot-col">
+        <h5>About</h5>
+        <a href="/faq">FAQ</a>
+        <a href="/privacy">Privacy</a>
+        <a href="#main" data-goldo-open>Start matching</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span data-year>2026</span> Goldo · Investor-matching assistant · built for AAPP002-4-2</div>
+      <div>Malaysia &amp; Singapore</div>
+    </div>
+    <p class="disc">Goldo recommends only investors present in its knowledge base and does not guarantee investor interest, introductions or funding. Some cheque sizes are estimated from published fund size, and some contact details are unverified — confirm before outreach. Nothing here is financial advice.</p>
+  </div>
+</footer>
+
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2026/08/03/19/20260803193922-PNDMOM69.js" defer></script>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
