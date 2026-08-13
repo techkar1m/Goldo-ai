@@ -32,10 +32,11 @@ public/                 the website (static, no build step)
 bot/                    the Botpress side
   01_extract_slots.js   Card 1 — free text -> startup frame (classifier)
   02_match_investors.js Card 2 — the rule engine
-  data/                 the 176-investor knowledge base (CSV)
+  data/                 the knowledge base, in the bot's schema (CSV)
   README.md             how to wire it up in Botpress Studio
 scripts/
   check-site.js         static-site smoke test
+  build-kb.js           crawler batch -> the bot's schema and vocabulary
   stats.js              recompute the figures quoted on the site
 server.js               static file server (routing, headers, caching)
 railway.json            Railway build + healthcheck config
@@ -128,21 +129,44 @@ tag in all seven pages of `public/`:
 <script src="https://files.bpcontent.cloud/2026/08/03/19/20260803193922-PNDMOM69.js" defer></script>
 ```
 
-## Keeping the numbers honest
+## The knowledge base
 
-The site quotes hard figures — 176 investors, 137 sector-agnostic, 34 with a
-published cheque range, 37 contacts needing verification, and the per-stage and
-per-sector counts on `/coverage`. They are all derived from
-`bot/data/investors_botpress.csv`:
+`bot/data/investors_botpress.csv` is **generated**, not hand-edited. It is built
+from the crawler batch (`shizune_filled.csv`) by:
+
+```bash
+node scripts/build-kb.js "<path to shizune_filled.csv>"
+```
+
+That step is not optional, and it is the thing most likely to be skipped by
+mistake. The batch stores Crunchbase-style values — `Pre-Seed`, `Series A`,
+`FinTech`, `Health Care` — while the rules only ever compare against `pre-seed`,
+`series-a`, `fintech`, `healthtech`. **Measured on the Malaysia/Singapore slice,
+the overlap between the two vocabularies is exactly zero.** Import the batch raw
+and rules E1, S1 and S3 silently never fire: everyone survives on missing data
+and ranking collapses onto geography alone. The output still looks plausible,
+which is what makes it worth guarding against.
+
+The current build: 8,653 source rows → 6,946 in Malaysia or Singapore → 627
+duplicate firms merged → **6,319 frames**, of which 1,673 declare a stage, 1,620
+a sector, and 331 carry a contact route.
+
+### Keeping the numbers honest
+
+The site quotes hard figures — 6,319 frames, 4,699 sector-agnostic, the
+per-market, per-type, per-stage and per-sector counts on `/coverage`. They all
+come from the generated CSV:
 
 ```bash
 npm run stats
 ```
 
-Edit the CSV, re-run that, and reconcile `public/coverage.html` and the hero
-strip in `public/index.html` with the output. The rule weights on `/method` and
-the confidence floors on `/how-it-works` come from the constants in the two
-`bot/*.js` cards.
+Rebuild the CSV, re-run that, and reconcile `public/coverage.html` with the
+output. The rule weights on `/method` and the confidence floors on
+`/how-it-works` come from the constants in the two `bot/*.js` cards.
+
+One figure is set by hand: the `1k+` in the hero strip of `public/index.html`.
+The measured count is 6,319, so `1k+` is true but conservative.
 
 ## Troubleshooting
 

@@ -52,7 +52,7 @@
     <div class="wrap">
       <span class="sec-label">Knowledge representation</span>
       <h2 style="margin-bottom:18px">Investors are frames, not prose</h2>
-      <p class="prose" style="max-width:68ch">Each of the 176 investors is stored as a frame with fixed slots. Storing them this way — rather than as free text — is what makes rule-based matching possible at all: every rule reads a named slot, and every slot uses the same controlled vocabulary the classifier labels your description with.</p>
+      <p class="prose" style="max-width:68ch">Every investor in the knowledge base is stored as a frame with fixed slots. Storing them this way — rather than as free text — is what makes rule-based matching possible at all: every rule reads a named slot, and every slot uses the same controlled vocabulary the classifier labels your description with.</p>
 
       <div class="table-scroll" style="margin-top:26px">
         <table>
@@ -65,7 +65,7 @@
             <tr><th scope="row">stage_focus</th><td>pre-seed; seed</td><td>E1, S1</td></tr>
             <tr><th scope="row">geography</th><td>Malaysia; Southeast Asia</td><td>E2, S2</td></tr>
             <tr><th scope="row">sector_focus</th><td>sector-agnostic</td><td>S3</td></tr>
-            <tr><th scope="row">ticket_size_min / max</th><td>5000 / 50000</td><td>S4</td></tr>
+            <tr><th scope="row">ticket_size_min / max</th><td><em>empty across the current base</em></td><td>S4</td></tr>
             <tr><th scope="row">focus_tags</th><td>early-stage</td><td>S5</td></tr>
             <tr><th scope="row">investor_type, country</th><td>Accelerator, MY</td><td>display</td></tr>
             <tr><th scope="row">contact, verify</th><td>info@example.com, yes</td><td>display</td></tr>
@@ -216,7 +216,7 @@
 <span class="kw">THEN</span> +25  "sector match: fintech"
 <span class="kw">ELSE IF</span> investor is sector-agnostic
 <span class="kw">THEN</span> +0   "sector-agnostic investor"   <span class="op">// noted, not scored</span></pre>
-          <p>This is the most consequential design decision in the system. 137 of 176 investors here are sector-agnostic. Penalising them for not declaring a thesis would bury three quarters of the market, so agnostic firms are neutral: they earn no bonus and take no penalty, and the reason line says so plainly.</p>
+          <p>This is the most consequential design decision in the system. 4,699 of the 6,319 investors here — three quarters — are recorded as sector-agnostic. Penalising them for not declaring a thesis would bury most of the market, so agnostic firms are neutral: they earn no bonus and take no penalty, and the reason line says so plainly.</p>
         </div>
       </div>
 
@@ -231,7 +231,7 @@
 <span class="kw">AND</span>  min <span class="op">&lt;=</span> raise <span class="op">&lt;=</span> max
 <span class="kw">THEN</span> +10  "cheque range fits US$300K ask"
 <span class="kw">ELSE</span>      +0   "ask below their US$1M minimum"</pre>
-          <p>Deliberately light, and only applied when you actually state a raise. Only 34 of the 176 investors publish a usable cheque range, and several of those are estimated from fund size — too thin a signal to let it move rankings much. A miss is still reported so you know the gap before you write to them.</p>
+          <p>Deliberately light, and only applied when you actually state a raise. It is also, right now, <strong>inert</strong>: no investor in the current knowledge base publishes a per-deal cheque range, so this rule awards nothing to anyone. Fund sizes exist for a handful of firms, but a fund size is not a cheque and Goldo will not estimate one from the other. The rule stays in the engine for when better data arrives — see <a href="/coverage">coverage</a>.</p>
         </div>
       </div>
 
@@ -257,7 +257,7 @@
     <div class="wrap">
       <span class="sec-label">Worked score</span>
       <h2 style="margin-bottom:18px">Adding it up for one investor</h2>
-      <p class="prose">A pre-seed Malaysian fintech founder raising US$300K, scored against an accelerator whose frame reads <code>stage_focus: pre-seed; seed</code>, <code>geography: Malaysia; Southeast Asia</code>, <code>sector_focus: sector-agnostic</code>, <code>ticket: 5,000–50,000</code>, <code>focus_tags: early-stage</code>:</p>
+      <p class="prose">A pre-seed Malaysian fintech founder raising US$300K, scored against an accelerator whose frame reads <code>stage_focus: pre-seed; seed</code>, <code>geography: Malaysia; Southeast Asia</code>, <code>sector_focus: sector-agnostic</code>, <code>focus_tags: early-stage</code>, and no published cheque range:</p>
 
       <div class="table-scroll" style="margin-top:24px">
         <table>
@@ -271,7 +271,7 @@
             <tr><th scope="row">S1</th><td>invests at pre-seed stage</td><td class="num">+35</td></tr>
             <tr><th scope="row">S2</th><td>covers Malaysia by name</td><td class="num">+25</td></tr>
             <tr><th scope="row">S3</th><td>sector-agnostic investor — neutral</td><td class="num">+0</td></tr>
-            <tr><th scope="row">S4</th><td>US$300K sits above their US$50K maximum</td><td class="num">+0</td></tr>
+            <tr><th scope="row">S4</th><td>no published cheque range — rule skipped</td><td class="num">+0</td></tr>
             <tr><th scope="row">S5</th><td>focuses on early-stage</td><td class="num">+5</td></tr>
             <tr><th scope="row">Total</th><td>ranked on 65 of a possible 100</td><td class="num">65</td></tr>
           </tbody>
@@ -279,7 +279,7 @@
       </div>
 
       <div class="callout">
-        <p><strong>Note what the score does not claim.</strong> 65 means “this firm fits the facts you gave me on four of five signals”. It is not a probability that they will invest, and Goldo never presents it as one.</p>
+        <p><strong>Note what the score does not claim.</strong> 65 means “this firm fits the facts you gave me on stage, geography and focus; the other two signals had nothing to compare”. It is not a probability that they will invest, and Goldo never presents it as one.</p>
       </div>
     </div>
   </section>
