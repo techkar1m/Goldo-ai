@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goldo — Investor Matching for Southeast Asian Founders</title>
+<meta name="description" content="Describe your startup in plain language. Goldo matches you with investors active in Malaysia and Singapore, filtered by stage, sector, geography and cheque size.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141b2e;          /* deep navy ink */
+    --ink-soft:#454f68;
+    --paper:#f6f4ee;        /* warm paper */
+    --paper-dim:#eae6db;
+    --line:#d8d2c4;
+    --accent:#3a5a40;       /* deep money-green */
+    --accent-bright:#5c8a52;
+    --gold:#b98a3c;         /* aged brass */
+    --card:#fffdf8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* ---- top bar ---- */
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(246,244,238,.86);backdrop-filter:blur(8px);z-index:10}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .mark{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:600;font-size:1.28rem;letter-spacing:-.01em}
+  .dot{width:26px;height:26px;border-radius:50%;background:var(--accent);position:relative;flex:none}
+  .dot::after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--gold)}
+  nav a{color:var(--ink-soft);text-decoration:none;font-size:.9rem;margin-left:26px;font-weight:500}
+  nav a:hover{color:var(--accent)}
+  @media(max-width:620px){nav{display:none}}
+
+  /* ---- hero ---- */
+  .hero{padding:88px 0 64px;position:relative}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.5rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.02em;max-width:14ch}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{font-size:1.16rem;color:var(--ink-soft);max-width:52ch;margin-top:26px}
+  .cta-row{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+  .btn{font-family:'Inter';font-weight:600;font-size:.98rem;padding:14px 26px;border-radius:2px;border:1px solid var(--accent);cursor:pointer;text-decoration:none;display:inline-block;transition:.15s}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--ink);border-color:var(--ink)}
+  .btn-ghost{background:transparent;color:var(--accent)}
+  .btn-ghost:hover{background:var(--paper-dim)}
+
+  /* ---- data strip ---- */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:72px}
+  .stat{padding:28px 22px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:600;line-height:1;color:var(--accent)}
+  .stat .l{font-size:.82rem;color:var(--ink-soft);margin-top:8px}
+  @media(max-width:620px){.strip{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}}
+
+  /* ---- how ---- */
+  section{padding:72px 0}
+  .sec-label{font-family:'JetBrains Mono',monospace;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:34px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .step{background:var(--card);padding:32px 26px}
+  .step .idx{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--gold);margin-bottom:16px}
+  .step h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.28rem;margin-bottom:10px;letter-spacing:-.01em}
+  .step p{font-size:.94rem;color:var(--ink-soft)}
+  @media(max-width:720px){.steps{grid-template-columns:1fr}}
+
+  /* ---- method / rules ---- */
+  .method{background:var(--ink);color:var(--paper);margin-top:0}
+  .method .sec-label{color:var(--gold)}
+  .method h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.01em;max-width:20ch;margin-bottom:20px}
+  .method p{color:#c3c8d4;max-width:56ch;font-size:1.04rem}
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+  .rule{border:1px solid #2b344c;padding:24px;border-radius:2px;background:#1a2237}
+  .rule .tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-bright);margin-bottom:12px}
+  .rule h4{font-size:1.02rem;margin-bottom:8px;font-weight:600}
+  .rule p{font-size:.9rem;color:#a8afc0;max-width:none}
+  @media(max-width:620px){.rules{grid-template-columns:1fr}}
+
+  /* ---- cta band ---- */
+  .band{text-align:center;padding:84px 0}
+  .band h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.01em;margin-bottom:18px}
+  .band p{color:var(--ink-soft);max-width:46ch;margin:0 auto 32px}
+  .hint{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--ink-soft);margin-top:20px}
+  .hint b{color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:var(--ink-soft)}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .disc{max-width:60ch;margin-top:14px;font-size:.78rem;color:var(--ink-soft);opacity:.85}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="mark"><span class="dot"></span>Goldo</div>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#method">The method</a>
+      <a href="#start">Start matching</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div class="eyebrow">Investor matching · Malaysia &amp; Singapore</div>
+    <h1>Find the investors who actually <em>fit</em> your round.</h1>
+    <p class="lede">Describe your startup in plain language — stage, sector, market, and how much you're raising. Goldo screens a knowledge base of real investors and returns the ones that match, with the reason for each.</p>
+    <div class="cta-row">
+      <a href="#start" class="btn btn-primary">Start matching</a>
+      <a href="#how" class="btn btn-ghost">See how it works</a>
+    </div>
+
+    <div class="strip">
+      <div class="stat"><div class="n">1k+</div><div class="l">investors in the knowledge base</div></div>
+      <div class="stat"><div class="n">MY · SG</div><div class="l">Malaysia &amp; Singapore</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">matching rules per query</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">canned answers — every match is computed</div></div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-label">How it works</div>
+      <div class="steps">
+        <div class="step">
+          <div class="idx">Step 01</div>
+          <h3>Describe your startup</h3>
+          <p>Tell Goldo your sector, funding stage, where you operate, and your target raise — in a sentence or through quick prompts.</p>
+        </div>
+        <div class="step">
+          <div class="idx">Step 02</div>
+          <h3>The rules screen every investor</h3>
+          <p>Hard filters drop investors who can't fit your stage or geography. A weighted scorer ranks whoever survives on sector, stage, cheque size and focus.</p>
+        </div>
+        <div class="step">
+          <div class="idx">Step 03</div>
+          <h3>Get a shortlist with reasons</h3>
+          <p>Goldo returns the best-fit investors and tells you exactly why each one matched — plus a contact route where one is on file.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" class="method">
+    <div class="wrap">
+      <div class="sec-label">The method</div>
+      <h2>Not a guess from a language model. A transparent expert system.</h2>
+      <p>Goldo represents each investor as a structured frame and matches with two tiers of production rules. The model only reads your description — the ranking is done by rules you can inspect, so every recommendation is explainable.</p>
+      <div class="rules">
+        <div class="rule">
+          <div class="tag">Eliminators · hard filters</div>
+          <h4>Stage &amp; geography</h4>
+          <p>An investor is dropped only on positive evidence of a mismatch — a growth-only fund for a pre-seed startup, or a market they don't cover. Missing data never eliminates.</p>
+        </div>
+        <div class="rule">
+          <div class="tag">Scorers · weighted</div>
+          <h4>Sector, stage, cheque, focus</h4>
+          <p>Survivors earn points for exact and adjacent fits. A sector-agnostic or unpriced investor is never penalised for what they simply didn't disclose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="band">
+    <div class="wrap">
+      <h2>Ready to find your investors?</h2>
+      <p>Open the chat and describe your startup. It takes about a minute.</p>
+      <button class="btn btn-primary" onclick="openGoldo()">Open Goldo</button>
+      <div class="hint">or tap the <b>chat button</b> in the bottom-right corner</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="mark" style="font-size:1.05rem"><span class="dot"></span>Goldo</div>
+      <div>Investor-matching assistant · built for AAPP002-4-2</div>
+    </div>
+    <p class="disc">Goldo recommends only investors present in its knowledge base and does not guarantee investor interest. Some cheque sizes are estimated from published fund size, and some contact details are unverified — confirm before outreach.</p>
+  </div>
+</footer>
+
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/08/03/19/20260803193922-PNDMOM69.js" defer></script>
+<script>
+  function openGoldo(){
+    if (window.botpress && typeof window.botpress.open === 'function'){
+      window.botpress.open();
+    } else {
+      // fallback: click the injected launcher if the SDK isn't ready yet
+      var l = document.querySelector('[class*="bpFab"], .bpw-widget-btn');
+      if (l) l.click();
+    }
+  }
+</script>
+</body>
+</html>
