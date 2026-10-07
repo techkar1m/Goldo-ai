@@ -48,7 +48,7 @@ railway.json            Railway build + healthcheck config
 npm start
 ```
 
-Then open <http://localhost:3000>. There is nothing to install — `npm start` runs
+Then open (https://goldo-ai-production.up.railway.app/). There is nothing to install — `npm start` runs
 `node server.js`, and the site has no dependencies and no build step.
 
 Before pushing:
